@@ -62,7 +62,8 @@ public class Music extends BaseAudio {
         if (!getParent().isAudioEnable() || !mIsCurrentStream) {
             return;
         }
-        if (!mMediaPlayer.isPlaying()) {
+		 
+        if (mMediaPlayer != null && !mMediaPlayer.isPlaying()) {
             mMediaPlayer.start();
         }
     }
@@ -72,7 +73,7 @@ public class Music extends BaseAudio {
         if (!getParent().isAudioEnable()) {
             return;
         }
-        if (mMediaPlayer.isPlaying()) {
+        if (mMediaPlayer != null && mMediaPlayer.isPlaying()) {
             mMediaPlayer.pause();
         }
         mMediaPlayer.seekTo(0);
@@ -83,7 +84,7 @@ public class Music extends BaseAudio {
         if (!getParent().isAudioEnable()) {
             return;
         }
-        if (mMediaPlayer.isPlaying() && !mIsPause) {
+        if (mMediaPlayer != null && mMediaPlayer.isPlaying() && !mIsPause) {
             mMediaPlayer.pause();
             mIsPause = true;
         }
@@ -94,7 +95,7 @@ public class Music extends BaseAudio {
         if (!getParent().isAudioEnable() || !mIsCurrentStream) {
             return;
         }
-        if (!mMediaPlayer.isPlaying() && mIsPause) {
+        if (mMediaPlayer != null && !mMediaPlayer.isPlaying() && mIsPause) {
             mMediaPlayer.start();
             mIsPause = false;
         }
